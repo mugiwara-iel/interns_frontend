@@ -10,7 +10,7 @@ submit.addEventListener('click',()=>{
     let department=document.querySelector("#department").value;
     let formData={name,university,role,department};
 
-    fetch("https://interns-info-2.onrender.com",{
+    fetch("https://semis-crudexam.onrender.com/api/users",{
         method:'POST',
         body: JSON.stringify(formData),
         headers:{
@@ -31,7 +31,7 @@ window.addEventListener('load', ()=>{
 function getUsers(){
     let html=""
     //FETCH API
-    fetch('https://interns-info-2.onrender.com',{mode:'cors'})
+    fetch('https://semis-crudexam.onrender.com/api/users',{mode:'cors'})
     .then(response=>{
         console.log(response);
         return response.json();
@@ -63,7 +63,7 @@ function deleteMember(id){
 
     let text;
     if(confirm("Press a button!")==true){
-        fetch("https://interns-info-2.onrender.com",{
+        fetch("https://semis-crudexam.onrender.com/api/users",{
         method:'DELETE',
         body: JSON.stringify({id}),
         headers:{
@@ -84,7 +84,7 @@ function deleteMember(id){
 
 //SEARCH
 function updateMember(id){
-    fetch(`https://interns-info-2.onrender.com/${id}`)
+    fetch(`https://semis-crudexam.onrender.com/api/users/${id}`)
     .then(response=>response.json())
     .then(data=>{
         document.querySelector("#name").value=data[0].name;
@@ -106,7 +106,7 @@ update.addEventListener('click',()=>{
 
     let formData={name,university,role,department,id};
 
-    fetch("https://interns-info-2.onrender.com",{
+    fetch("https://semis-crudexam.onrender.com/api/users",{
         method:'PUT',
         body: JSON.stringify(formData),
         headers:{
